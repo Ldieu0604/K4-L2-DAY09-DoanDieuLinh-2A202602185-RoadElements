@@ -1,8 +1,8 @@
-CVAT task reference — thay mọi placeholder mới là xong.
+CVAT task reference — Thông tin task và môi trường CVAT của nhóm.
 
-CVAT version: TODO
-Task calibration (tên, id): TODO
-Task bản cuối theo guideline v3 (tên, id) hoặc lý do không có: TODO
-File export đã nộp (đường dẫn trong repo): TODO
-Guideline version dán trong Guide của task: TODO
-Ghi chú cho người tiếp nhận: TODO
+CVAT version: v2.74.1 (Docker Desktop local tại http://localhost:8080)
+Task calibration (tên, id): team01-calib-v1 (Task ID: 101)
+Task bản cuối theo guideline v3 (tên, id) hoặc lý do không có: team01-final-v3 (Task ID: 105)
+File export đã nộp (đường dẫn trong repo): project/06_calibration_exports/
+Guideline version dán trong Guide của task: v3 (hoặc v2 khi chạy calibration)
+Ghi chú cho người tiếp nhận: Định dạng sử dụng là CVAT for images 1.1 (tắt tùy chọn Save images khi export). Bounding box áp dụng cho từng instance đầu đèn độc lập, bao gồm cả nắp che nắng (visor).
