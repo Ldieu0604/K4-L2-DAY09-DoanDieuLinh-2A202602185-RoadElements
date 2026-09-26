@@ -83,3 +83,33 @@ LISA27,data/lisa/LISA27.jpg,lisa,dayClip5--01632.jpg,dayClip5 frame 1632,1280,96
 LISA28,data/lisa/LISA28.jpg,lisa,dayClip5--01633.jpg,dayClip5 frame 1633,1280,960,,,
 LISA29,data/lisa/LISA29.jpg,lisa,dayClip5--01634.jpg,dayClip5 frame 1634,1280,960,,,
 LISA30,data/lisa/LISA30.jpg,lisa,dayClip5--01635.jpg,dayClip5 frame 1635,1280,960,,,
+TL01,data/traffic_light/TL01.jpg,traffic_light,archivo_606_jpg.rf.057e2f4382d970100128f77be70028fb.jpg,,640,640,clear,daytime,city street
+TL02,data/traffic_light/TL02.jpg,traffic_light,archivo_906_jpg.rf.2050eabf8f13f359aeca7458064336c3.jpg,,640,640,clear,daytime,city street
+TL03,data/traffic_light/TL03.jpg,traffic_light,archivo_379_jpg.rf.02d0a77319a921876fd4a7920840af04.jpg,,640,640,clear,daytime,city street
+TL04,data/traffic_light/TL04.jpg,traffic_light,archivo_865_jpg.rf.03e0bd0f1c70b2db7c99d468c2780b43.jpg,,640,640,clear,daytime,city street
+TL05,data/traffic_light/TL05.jpg,traffic_light,archivo_1156_jpg.rf.097f30c1aaf969d9a858662217781d93.jpg,,640,640,clear,daytime,city street
+TL06,data/traffic_light/TL06.jpg,traffic_light,archivo_133_jpg.rf.c4cbb424ce17ce7fa4168deddd46dd64.jpg,,640,640,clear,daytime,city street
+TL07,data/traffic_light/TL07.jpg,traffic_light,archivo_293_jpg.rf.f6f03f6ae059972da431505e0023768d.jpg,,640,640,clear,daytime,city street
+TL08,data/traffic_light/TL08.jpg,traffic_light,archivo_137_jpg.rf.fb52f4fbf943b05c2802dee7627f9ed4.jpg,,640,640,clear,daytime,city street
+TL09,data/traffic_light/TL09.jpg,traffic_light,archivo_283_jpg.rf.f8f0551fcdc32020bd4c833b57ce8509.jpg,,640,640,clear,daytime,city street
+TL10,data/traffic_light/TL10.jpg,traffic_light,archivo_482_jpg.rf.0a33f2b3939e4b4b711e4c80485bdccb.jpg,,640,640,clear,daytime,city street
+TL11,data/traffic_light/TL11.jpg,traffic_light,archivo_612_jpg.rf.04e51c4b4624d389b4bd94da57b54294.jpg,,640,640,clear,daytime,city street
+TL12,data/traffic_light/TL12.jpg,traffic_light,archivo_198_jpg.rf.11779e419b3f02ba00015fcd8939dcc1.jpg,,640,640,clear,daytime,city street
+TL13,data/traffic_light/TL13.jpg,traffic_light,archivo_83_jpg.rf.0f41735dbe59f058a830044234db60a0.jpg,,640,640,clear,daytime,city street
+TL14,data/traffic_light/TL14.jpg,traffic_light,archivo_946_jpg.rf.138fbfb3a1fb314dbd56fff224dea8fd.jpg,,640,640,clear,daytime,city street
+TL15,data/traffic_light/TL15.jpg,traffic_light,archivo_340_jpg.rf.184295ac50ddc10b7b9dfd33ba493749.jpg,,640,640,clear,daytime,city street
+TL16,data/traffic_light/TL16.jpg,traffic_light,archivo_741_jpg.rf.16d8e87bf487a98e04a17234f43d9b46.jpg,,640,640,clear,daytime,city street
+TL17,data/traffic_light/TL17.jpg,traffic_light,archivo_75_jpg.rf.19a511d6754ad3da6ff85abe6af69e7c.jpg,,640,640,clear,daytime,city street
+TL18,data/traffic_light/TL18.jpg,traffic_light,archivo_887_jpg.rf.1f8d902302168a6959c6c0c06dde421e.jpg,,640,640,clear,daytime,city street
+TL19,data/traffic_light/TL19.jpg,traffic_light,archivo_473_jpg.rf.259ac68c13a50356ea70d9d3a39c5397.jpg,,640,640,clear,daytime,city street
+TL20,data/traffic_light/TL20.jpg,traffic_light,archivo_1034_jpg.rf.150e732543928af224e8ff0ced463b51.jpg,,640,640,clear,daytime,city street
+TL21,data/traffic_light/TL21.jpg,traffic_light,archivo_757_jpg.rf.2461ec40d7495f7fca9aea4bbafa20d9.jpg,,640,640,clear,daytime,city street
+TL22,data/traffic_light/TL22.jpg,traffic_light,archivo_282_jpg.rf.4271b3422fb144805a6e96b012ac5972.jpg,,640,640,clear,daytime,city street
+TL23,data/traffic_light/TL23.jpg,traffic_light,archivo_158_jpg.rf.10f839bf4fcd5578e975b1618d11b055.jpg,,640,640,clear,daytime,city street
+TL24,data/traffic_light/TL24.jpg,traffic_light,archivo_436_jpg.rf.08ee1923b8a3723da9e540f76e4a6888.jpg,,640,640,clear,daytime,city street
+TL25,data/traffic_light/TL25.jpg,traffic_light,archivo_892_jpg.rf.09478067f3541d5ae18ea500aecbcd01.jpg,,640,640,clear,daytime,city street
+TL26,data/traffic_light/TL26.jpg,traffic_light,archivo_859_jpg.rf.04035ea2aa69387e3080332cfd23e41e.jpg,,640,640,clear,daytime,city street
+TL27,data/traffic_light/TL27.jpg,traffic_light,archivo_276_jpg.rf.04201c471a1cb1e1a7dcedd49130b4ab.jpg,,640,640,clear,daytime,city street
+TL28,data/traffic_light/TL28.jpg,traffic_light,archivo_463_jpg.rf.094499e1bfcdbbc320fe1ffd55976ef8.jpg,,640,640,clear,daytime,city street
+TL29,data/traffic_light/TL29.jpg,traffic_light,archivo_446_jpg.rf.0c5b21426ed176961dae5f8fcb5c2d19.jpg,,640,640,clear,daytime,city street
+TL30,data/traffic_light/TL30.jpg,traffic_light,archivo_21_jpg.rf.047342bed871bc2eca55a3b4c0ed5f68.jpg,,640,640,clear,daytime,city street
