@@ -24,9 +24,17 @@ CATALOG_COLUMNS = [
 PACK_COLUMNS = ["sample_id", "split", "tags", "reason"]
 
 
+def _catalog_location(base: Path) -> Tuple[Path, Path, bool]:
+    team_catalog = base / "data_label" / "catalog.csv"
+    if team_catalog.is_file():
+        return team_catalog, team_catalog.parent, True
+    organizer_catalog = base / "data" / "catalog.csv"
+    return organizer_catalog, base / "data", False
+
+
 def load_catalog(base: Path) -> Tuple[List[Dict[str, str]], Dict[str, Dict[str, str]]]:
     """Đọc catalog và lập chỉ mục sample_id duy nhất."""
-    path = base / "data" / "catalog.csv"
+    path, _, is_team_catalog = _catalog_location(base)
     header, rows = read_csv(path)
     require_columns(path, header, CATALOG_COLUMNS)
     indexed: Dict[str, Dict[str, str]] = {}
@@ -37,26 +45,29 @@ def load_catalog(base: Path) -> Tuple[List[Dict[str, str]], Dict[str, Dict[str, 
         if sample_id in indexed:
             raise LabError(f"data/catalog.csv trùng sample_id {sample_id}.")
         relative = Path(row.get("file", ""))
+        expected_prefix = () if is_team_catalog else ("data",)
         if (
             relative.is_absolute()
             or ".." in relative.parts
-            or len(relative.parts) < 3
-            or relative.parts[0] != "data"
+            or len(relative.parts) < (2 if is_team_catalog else 3)
+            or relative.parts[: len(expected_prefix)] != expected_prefix
             or relative.stem != sample_id
             or relative.suffix.lower() not in {".jpg", ".jpeg", ".png", ".ppm"}
         ):
-            raise LabError(f"data/catalog.csv có đường dẫn media không an toàn cho {sample_id}.")
+            raise LabError(f"{path} có đường dẫn media không an toàn cho {sample_id}.")
         indexed[sample_id] = row
     return rows, indexed
 
 
 def media_path(base: Path, row: Dict[str, str]) -> Path:
-    """Resolve media và chặn symlink/path thoát khỏi data/."""
-    candidate = base / row["file"]
+    """Resolve media trong thư mục catalog đang dùng và chặn path traversal."""
+    _, media_root, is_team_catalog = _catalog_location(base)
+    relative = Path(row["file"])
+    candidate = media_root / relative if is_team_catalog else base / relative
     try:
-        candidate.resolve().relative_to((base / "data").resolve())
+        candidate.resolve().relative_to(media_root.resolve())
     except (OSError, ValueError) as error:
-        raise LabError(f"Đường dẫn media thoát khỏi data/ cho {row.get('sample_id', '(không rõ)')}.") from error
+        raise LabError(f"Đường dẫn media thoát khỏi catalog cho {row.get('sample_id', '(không rõ)')}.") from error
     if not candidate.is_file():
         raise LabError(f"Thiếu ảnh {row['file']} của {row.get('sample_id', '(không rõ)')}.")
     return candidate
