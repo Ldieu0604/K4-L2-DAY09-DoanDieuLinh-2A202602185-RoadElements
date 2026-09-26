@@ -1,6 +1,6 @@
 # Annotation guideline — Traffic Light State, Direction & Relevance
 
-**Version:** v2
+**Version:** v1
 
 ## 1. Objective + scope
 - **Mục tiêu:** Định vị đèn giao thông, trạng thái màu, và xác định xem đèn có đang điều khiển hướng đi hiện tại của xe (ego vehicle) hay không.
@@ -48,12 +48,9 @@ eeds_review=true.
 ## 9. Examples
 | sample_id | Thấy gì | Expected output | Rule áp dụng |
 |---|---|---|---|
-| TL01 | Đèn giao lộ trạng thái bật sáng xanh rõ ràng | Bounding box 	raffic_light: state=green, 
-elevance=relevant, direction=all | Mục 2 & 3: Vẽ tight ôm sát vỏ hộp đèn |
-| TL02 | Cụm đèn hiển thị màu đỏ kiểm soát luồng giao thông | Bounding box 	raffic_light: state=red, 
-elevance=relevant | Mục 4: Nhận diện chính xác trạng thái đèn đỏ an toàn |
-| TL03 | Đầu đèn ở trạng thái tắt (Off), không có bóng đèn nào sáng | Bounding box 	raffic_light: state=off, 
-elevance=not_relevant | Mục 4: Đèn không phát sáng gán nhãn state=off |
+| TL01 | Đèn giao lộ trạng thái bật sáng xanh rõ ràng | Bounding box traffic_light: state=green,levance=relevant, direction=all | Mục 2 & 3: Vẽ tight ôm sát vỏ hộp đèn |
+| TL02 | Cụm đèn hiển thị màu đỏ kiểm soát luồng giao thông | Bounding box traffic_light: state=red,elevance=relevant | Mục 4: Nhận diện chính xác trạng thái đèn đỏ an toàn |
+| TL03 | Đầu đèn ở trạng thái tắt (Off), không có bóng đèn nào sáng | Bounding box traffic_light: state=off,elevance=not_relevant | Mục 4: Đèn không phát sáng gán nhãn state=off |
 | TL04 | Giao lộ phức tạp nhiều đầu đèn cùng lúc | Vẽ từng bounding box riêng biệt cho từng đầu đèn, không vẽ gộp | Mục 2 & 4: Phân tách rõ ràng từng instance độc lập |
 | TL05 | Đèn ở cự ly xa hoặc bị lóa nhẹ | Bounding box ôm sát vỏ đèn nhìn thấy, không kéo rộng ra quầng lóa | Mục 3 & 6: Visible box, không tính quầng quang sai |
 
