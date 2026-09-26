@@ -1,6 +1,6 @@
 # Annotation guideline — Traffic Light State, Direction & Relevance
 
-**Version:** v2
+**Version:** v3
 
 ## 1. Objective + scope
 - **Mục tiêu:** Định vị đèn giao thông, trạng thái màu, và xác định xem đèn có đang điều khiển hướng đi hiện tại của xe (ego vehicle) hay không.
@@ -58,3 +58,12 @@
 3. **Quên chọn attribute để mặc định __undefined__:** Khiến export bị lỗi thiếu nhãn.
 4. **Gán nhầm Relevance:** Thấy đèn xanh là gán ngay relevant dù đó là đèn của làn rẽ phụ.
 5. **Vẽ cả đèn người đi bộ:** Đèn có hình người đi bộ không thuộc scope bài toán xe tự hành này.
+
+## 11. Checklist cho Annotator (Tự kiểm tra trước khi nộp)
+Để đảm bảo chất lượng, mỗi Annotator hãy tự kiểm tra theo các câu hỏi sau trước khi bấm nộp bài:
+- [ ] **1. Đã vẽ đủ số lượng?** Có sót đèn giao thông nào phía trước xe (kích thước ≥ 8x8 px) không?
+- [ ] **2. Box đã khít CẢ VỎ đèn chưa?** Hay mình lại đang chỉ vẽ khoanh vùng mỗi cái chấm sáng?
+- [ ] **3. Lỗi ban đêm?** Box có bị vẽ rộng ra bao lấy cả phần quầng sáng lóa (glare) ban đêm không?
+- [ ] **4. Quên thuộc tính?** Tất cả các đèn đã có đủ 3 thuộc tính (state, relevance, direction) chưa, hay vẫn còn sót chữ `__undefined__`?
+- [ ] **5. Sai hướng?** Hướng rẽ (direction) đã được xác định ĐÚNG theo góc nhìn của mình (xe ego) chưa?
+- [ ] **6. Ca khó?** Có ca nào quá khó, mất vạch kẻ đường, bị che khuất mà mình quên đánh dấu `needs_review` hoặc `image_escalate` để hỏi lại QA không?
