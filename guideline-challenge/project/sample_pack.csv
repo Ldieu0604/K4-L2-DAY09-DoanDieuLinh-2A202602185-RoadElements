@@ -1,14 +1,31 @@
 sample_id,split,tags,reason
-BDD02,example,normal,Đèn ban ngày ngã tư rõ ràng minh họa bounding box ôm vỏ housing
-BDD10,example,normal,Đèn đường phố ban ngày minh họa phân biệt state và direction
-BDD18,example,low_visibility;edge,Đèn ban đêm minh họa xử lý quầng sáng và bóng lóa
-BDD04,calibration,normal;edge,Đo độ đồng thuận gán nhãn đèn nhiều làn xe
-BDD11,calibration,edge;occlusion,Đèn bị che khuất một phần bởi tán cây kiểm tra rule visibility
-BDD13,calibration,edge,Cụm đèn rẽ nhánh và đèn đi thẳng cạnh nhau kiểm tra relevance
-BDD17,calibration,low_visibility;edge,Đèn trong điều kiện trời mưa kính xe đọng nước
-BDD25,calibration,edge,Đèn lúc chạng vạng sáng tương phản thấp
-BDD15,blind,normal,Test khả năng phát hiện đèn và gán nhãn baseline của peer
-BDD07,blind,edge;small_far,Test quy tắc gán nhãn đèn nhỏ ở xa trên đường lớn
-BDD12,blind,edge;occlusion,Test xử lý đèn bị che một phần và quy tắc relevance làn rẽ
-BDD26,blind,critical;low_visibility,Test an toàn critical đèn đỏ ban đêm tránh nhầm state hoặc bỏ sót
-BDD24,blind,ambiguity;edge,Test xử lý tuyết rơi mờ và kích hoạt escalation hoặc unknown khi mất làn
+TL01,example,normal,Đèn minh họa trạng thái Red/Red/Red cho tài liệu guideline
+TL02,example,normal,Đèn minh họa trạng thái Red/Off/Red cho tài liệu guideline
+TL03,example,normal,Đèn minh họa trạng thái Green/Red/Red cho tài liệu guideline
+TL04,example,normal,Đèn minh họa trạng thái Red/Green/Red cho tài liệu guideline
+TL05,example,normal,Đèn minh họa trạng thái Red/Green/Red cho tài liệu guideline
+TL06,calibration,edge;ambiguity,Thực hành calibration đo độ đồng thuận giữa các annotator (Red/Off/Red)
+TL07,calibration,edge;ambiguity,Thực hành calibration đo độ đồng thuận giữa các annotator (Red/Off/Red)
+TL08,calibration,edge;ambiguity,Thực hành calibration đo độ đồng thuận giữa các annotator (Red/Off/Red)
+TL09,calibration,edge;ambiguity,Thực hành calibration đo độ đồng thuận giữa các annotator (Red/Off/Red)
+TL10,calibration,edge;conflict,Thực hành calibration đo độ đồng thuận giữa các annotator (Green/Red/Red)
+TL11,calibration,edge;conflict,Thực hành calibration đo độ đồng thuận giữa các annotator (Green/Red/Red)
+TL12,calibration,edge;conflict,Thực hành calibration đo độ đồng thuận giữa các annotator (Red/Green/Red)
+TL13,calibration,edge;conflict,Thực hành calibration đo độ đồng thuận giữa các annotator (Red/Green/Red)
+TL14,calibration,edge;conflict,Thực hành calibration đo độ đồng thuận giữa các annotator (Red/Green/Red)
+TL15,calibration,edge;conflict,Thực hành calibration đo độ đồng thuận giữa các annotator (Red/Green/Red)
+TL16,calibration,edge;conflict,Thực hành calibration đo độ đồng thuận giữa các annotator (Green/Red/Red)
+TL17,calibration,edge;conflict,Thực hành calibration đo độ đồng thuận giữa các annotator (Green/Red/Red)
+TL18,calibration,edge;conflict,Thực hành calibration đo độ đồng thuận giữa các annotator (Red/Green/Red)
+TL19,calibration,edge;conflict,Thực hành calibration đo độ đồng thuận giữa các annotator (Green/Red/Red)
+TL20,calibration,edge;conflict,Thực hành calibration đo độ đồng thuận giữa các annotator (Red/Green/Red)
+TL21,blind,ambiguity;edge,Test xử lý đèn trạng thái Off hoặc không phát sáng rõ
+TL22,blind,ambiguity;edge,Test xử lý đèn trạng thái Off hoặc không phát sáng rõ
+TL23,blind,critical;edge,Test an toàn critical đèn đỏ và phân biệt relevance tránh vượt đèn
+TL24,blind,critical;edge,Test an toàn critical đèn đỏ và phân biệt relevance tránh vượt đèn
+TL25,blind,critical;edge,Test an toàn critical đèn đỏ và phân biệt relevance tránh vượt đèn
+TL26,blind,critical;edge,Test an toàn critical đèn đỏ và phân biệt relevance tránh vượt đèn
+TL27,blind,critical;edge,Test an toàn critical đèn đỏ và phân biệt relevance tránh vượt đèn
+TL28,blind,critical;edge,Test an toàn critical đèn đỏ và phân biệt relevance tránh vượt đèn
+TL29,blind,normal,Test khả năng phát hiện đèn và gán nhãn baseline của peer
+TL30,blind,normal,Test khả năng phát hiện đèn và gán nhãn baseline của peer

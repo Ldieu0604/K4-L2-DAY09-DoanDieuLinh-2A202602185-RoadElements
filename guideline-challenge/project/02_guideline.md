@@ -1,6 +1,6 @@
 # Annotation guideline — Traffic Light State, Direction & Relevance
 
-**Version:** v1
+**Version:** v2
 
 ## 1. Objective + scope
 - **Mục tiêu:** Định vị đèn giao thông, trạng thái màu, và xác định xem đèn có đang điều khiển hướng đi hiện tại của xe (ego vehicle) hay không.
@@ -57,14 +57,14 @@ eeds_review=true.
 ## 9. Examples
 | sample_id | Thấy gì | Expected output | Rule áp dụng |
 |---|---|---|---|
-| BDD02 | Giao lộ ban ngày, 2 đầu đèn treo ngang trên giá long môn | 2 box 	raffic_light riêng biệt: state=green, 
-elevance=relevant, direction=all | Mục 2 & 3: Vẽ từng đầu đèn riêng, ôm sát vỏ |
-| BDD10 | Đèn ngã tư có mũi tên rẽ, xe ego ở làn đi thẳng | Box đèn rẽ: direction=left, 
-elevance=not_relevant. Box đèn thẳng: direction=straight, 
-elevance=relevant | Mục 4: Phân biệt relevance theo làn đường |
-| BDD18 | Ngã tư ban đêm, đèn phát sáng tạo quầng sáng lóa xung quanh | Box chữ nhật ôm sát vỏ đèn kim loại, không kéo rộng ra vùng ánh sáng lóa | Mục 6: Quầng sáng ban đêm không tính vào box |
-| BDD11 | Đèn bị cành cây xanh che khuất một phần phía trên | Box ôm sát phần vỏ nhìn thấy được, không vẽ amodal box | Mục 3 & 6: Visible box khi bị che khuất |
-| BDD13 | Cụm đèn rẽ trái đỏ và đèn thẳng xanh cùng xuất hiện | Đèn rẽ: state=red, relevance=not_relevant. Đèn thẳng: state=green, relevance=relevant | Mục 1 & 4: Tránh phanh nhầm do đèn rẽ trái |
+| TL01 | Đèn giao lộ trạng thái bật sáng xanh rõ ràng | Bounding box 	raffic_light: state=green, 
+elevance=relevant, direction=all | Mục 2 & 3: Vẽ tight ôm sát vỏ hộp đèn |
+| TL02 | Cụm đèn hiển thị màu đỏ kiểm soát luồng giao thông | Bounding box 	raffic_light: state=red, 
+elevance=relevant | Mục 4: Nhận diện chính xác trạng thái đèn đỏ an toàn |
+| TL03 | Đầu đèn ở trạng thái tắt (Off), không có bóng đèn nào sáng | Bounding box 	raffic_light: state=off, 
+elevance=not_relevant | Mục 4: Đèn không phát sáng gán nhãn state=off |
+| TL04 | Giao lộ phức tạp nhiều đầu đèn cùng lúc | Vẽ từng bounding box riêng biệt cho từng đầu đèn, không vẽ gộp | Mục 2 & 4: Phân tách rõ ràng từng instance độc lập |
+| TL05 | Đèn ở cự ly xa hoặc bị lóa nhẹ | Bounding box ôm sát vỏ đèn nhìn thấy, không kéo rộng ra quầng lóa | Mục 3 & 6: Visible box, không tính quầng quang sai |
 
 ## 10. Common mistakes
 1. **Chỉ vẽ quanh mỗi bóng đèn đang sáng:** Phải vẽ bao quanh CẢ CÁI VỎ (housing) của đầu đèn.
