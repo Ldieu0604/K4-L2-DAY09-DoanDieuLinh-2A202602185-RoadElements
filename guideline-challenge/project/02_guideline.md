@@ -1,6 +1,6 @@
 # Annotation guideline — Traffic Light State, Direction & Relevance
 
-**Version:** v1
+**Version:** v2
 
 ## 1. Objective + scope
 - **Mục tiêu:** Định vị đèn giao thông, trạng thái màu, và xác định xem đèn có đang điều khiển hướng đi hiện tại của xe (ego vehicle) hay không.
@@ -23,6 +23,7 @@
   1. state (Trạng thái màu): red, green, yellow, off, unknown.
   2. relevance (Sự liên quan đến xe): relevant, not_relevant, unknown.
   3. direction (Hướng điều khiển): straight, left, right, all (đèn tròn thông thường), unknown.
+     - **Lưu ý quan trọng:** Hướng (Left/Right) luôn được xác định theo **góc nhìn của xe mình (ego vehicle)** tiến về phía trước — tức là góc nhìn của chính bạn khi nhìn vào bức ảnh.
   4. needs_review: Checkbox đánh dấu true khi ca phức tạp cần QA xem lại.
 - **Image-level Tag:** image_escalate (gắn cho toàn ảnh khi thời tiết quá mờ hoặc mất toàn bộ ngữ cảnh làn đường).
 
@@ -31,15 +32,12 @@
 - **Bỏ qua (Ignore):** Đèn người đi bộ, đèn đuôi ô tô, hình phản chiếu trên kính/vũng nước, đèn nhỏ tít hậu cảnh.
 
 ## 6. Visibility / occlusion
-- **Bị che một phần (tán cây, xe tải):** Vẽ box quanh phần vỏ nhìn thấy được. Nếu che mất bóng đèn đang sáng khiến không rõ màu, chọn state=unknown và tích 
-eeds_review.
+- **Bị che một phần (tán cây, xe tải):** Vẽ box quanh phần vỏ nhìn thấy được. Nếu che mất bóng đèn đang sáng khiến không rõ màu, chọn state=unknown và tích needs_review.
 - **Ban đêm / Loá sáng (Glare):** Đèn ban đêm tạo quầng sáng lớn: **Chỉ vẽ ôm khít phần bóng/vỏ đèn vật lý**, tuyệt đối KHÔNG vẽ kéo rộng bao trùm cả quầng sáng lóa.
 - **Trời mưa:** Kính xe mờ nước không nhìn rõ mũi tên: chọn direction=unknown.
 
 ## 7. Ambiguity / escalation
-- Nếu thấy cụm đèn không rõ thuộc làn nào: Gán nhãn, chọn 
-elevance=unknown và tích 
-eeds_review=true.
+- Nếu thấy cụm đèn không rõ thuộc làn nào: Gán nhãn, chọn relevance=unknown và tích needs_review=true.
 - Toàn bộ giao lộ bị mất vạch kẻ đường: Dùng công cụ **Setup tag** chọn image_escalate.
 
 ## 8. Temporal rule
@@ -48,9 +46,9 @@ eeds_review=true.
 ## 9. Examples
 | sample_id | Thấy gì | Expected output | Rule áp dụng |
 |---|---|---|---|
-| TL01 | Đèn giao lộ trạng thái bật sáng xanh rõ ràng | Bounding box traffic_light: state=green,levance=relevant, direction=all | Mục 2 & 3: Vẽ tight ôm sát vỏ hộp đèn |
-| TL02 | Cụm đèn hiển thị màu đỏ kiểm soát luồng giao thông | Bounding box traffic_light: state=red,elevance=relevant | Mục 4: Nhận diện chính xác trạng thái đèn đỏ an toàn |
-| TL03 | Đầu đèn ở trạng thái tắt (Off), không có bóng đèn nào sáng | Bounding box traffic_light: state=off,elevance=not_relevant | Mục 4: Đèn không phát sáng gán nhãn state=off |
+| TL01 | Đèn giao lộ trạng thái bật sáng xanh rõ ràng | Bounding box traffic_light: state=green, relevance=relevant, direction=all | Mục 2 & 3: Vẽ tight ôm sát vỏ hộp đèn |
+| TL02 | Cụm đèn hiển thị màu đỏ kiểm soát luồng giao thông | Bounding box traffic_light: state=red, relevance=relevant | Mục 4: Nhận diện chính xác trạng thái đèn đỏ an toàn |
+| TL03 | Đầu đèn ở trạng thái tắt (Off), không có bóng đèn nào sáng | Bounding box traffic_light: state=off, relevance=not_relevant | Mục 4: Đèn không phát sáng gán nhãn state=off |
 | TL04 | Giao lộ phức tạp nhiều đầu đèn cùng lúc | Vẽ từng bounding box riêng biệt cho từng đầu đèn, không vẽ gộp | Mục 2 & 4: Phân tách rõ ràng từng instance độc lập |
 | TL05 | Đèn ở cự ly xa hoặc bị lóa nhẹ | Bounding box ôm sát vỏ đèn nhìn thấy, không kéo rộng ra quầng lóa | Mục 3 & 6: Visible box, không tính quầng quang sai |
 
@@ -58,6 +56,5 @@ eeds_review=true.
 1. **Chỉ vẽ quanh mỗi bóng đèn đang sáng:** Phải vẽ bao quanh CẢ CÁI VỎ (housing) của đầu đèn.
 2. **Kéo box ôm quầng sáng ban đêm:** Ban đêm đèn lóa to, annotator vẽ box to gấp 3 vỏ đèn (Sai: phải thu nhỏ lại theo kích thước vỏ).
 3. **Quên chọn attribute để mặc định __undefined__:** Khiến export bị lỗi thiếu nhãn.
-4. **Gán nhầm Relevance:** Thấy đèn xanh là gán ngay 
-elevant dù đó là đèn của làn rẽ phụ.
+4. **Gán nhầm Relevance:** Thấy đèn xanh là gán ngay relevant dù đó là đèn của làn rẽ phụ.
 5. **Vẽ cả đèn người đi bộ:** Đèn có hình người đi bộ không thuộc scope bài toán xe tự hành này.
