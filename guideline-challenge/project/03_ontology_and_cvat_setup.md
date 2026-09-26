@@ -4,14 +4,14 @@ Bảng ontology là **source of truth** cho schema CVAT: `03_cvat_labels.json` k
 
 ## Ontology table
 
-| Name | Geometry | Type (class / attribute) | Allowed values | Default | Mutable? | Rationale |
-|---|---|---|---|---|---|---|
-| `traffic_light` | rectangle | class | n/a | n/a | false | Thực thể vật lý độc lập cần bounding box 2D phát hiện vị trí vỏ đèn |
-| `state` | n/a | attribute | `__undefined__`, `red`, `yellow`, `green`, `off`, `unknown` | `__undefined__` | false | Trạng thái phát sáng của đèn; ảnh hưởng trực tiếp hành vi Stop/Go của xe |
-| `relevance` | n/a | attribute | `__undefined__`, `relevant`, `not_relevant`, `unknown` | `__undefined__` | false | Đèn có chi phối làn đường xe ego đang đi hay không (tránh dừng nhầm vì đèn làn rẽ) |
-| `direction` | n/a | attribute | `__undefined__`, `straight`, `left`, `right`, `all`, `unknown` | `__undefined__` | false | Mũi tên chỉ hướng hoặc hình tròn (`all`) mà đèn áp dụng |
-| `needs_review` | n/a | attribute | `false` (unchecked / checked) | `false` | false | Checkbox đánh dấu vật thể nghi ngờ/tranh chấp để Lead Reviewer kiểm tra |
-| `image_escalate` | tag | tag (image-level) | n/a | n/a | false | Gán cho cả ảnh khi khung cảnh thiếu ngữ cảnh nghiêm trọng (mất làn, mất dấu vết) |
+| Name             | Geometry  | Type (class / attribute) | Allowed values                                                 | Default         | Mutable? | Rationale                                                                          |
+| ---------------- | --------- | ------------------------ | -------------------------------------------------------------- | --------------- | -------- | ---------------------------------------------------------------------------------- |
+| `traffic_light`  | rectangle | class                    | n/a                                                            | n/a             | false    | Thực thể vật lý độc lập cần bounding box 2D phát hiện vị trí vỏ đèn                |
+| `state`          | n/a       | attribute                | `__undefined__`, `red`, `yellow`, `green`, `off`, `unknown`    | `__undefined__` | false    | Trạng thái phát sáng của đèn; ảnh hưởng trực tiếp hành vi Stop/Go của xe           |
+| `relevance`      | n/a       | attribute                | `__undefined__`, `relevant`, `not_relevant`, `unknown`         | `__undefined__` | false    | Đèn có chi phối làn đường xe ego đang đi hay không (tránh dừng nhầm vì đèn làn rẽ) |
+| `direction`      | n/a       | attribute                | `__undefined__`, `straight`, `left`, `right`, `all`, `unknown` | `__undefined__` | false    | Mũi tên chỉ hướng hoặc hình tròn (`all`) mà đèn áp dụng                            |
+| `needs_review`   | n/a       | attribute                | `false` (unchecked / checked)                                  | `false`         | false    | Checkbox đánh dấu vật thể nghi ngờ/tranh chấp để Lead Reviewer kiểm tra            |
+| `image_escalate` | tag       | tag (image-level)        | n/a                                                            | n/a             | false    | Gán cho cả ảnh khi khung cảnh thiếu ngữ cảnh nghiêm trọng (mất làn, mất dấu vết)   |
 
 ## Class hay attribute
 

@@ -14,7 +14,7 @@
 | Trần Thị Thủy Tiên | thuytienthao123-rgb | CVAT owner | `03_*`, `sample_pack.csv`, `09` |
 | Trần Nhật Tân | TÂN | calibration owner | `06_calibration_report.csv` |
 | Nguyễn Hoài Thanh | Thanhchinn | gold owner | `04_edge_cases/` |
-| Hoàng Công Chứ | Hoàng Công Chứ | QA owner | `05`, `07_blind_handoff/` |
+| Hoàng Công Chứ | hoangcongchu2k4-ctrl | QA owner | `05`, `07_blind_handoff/` |
 
 
 Gợi ý chia vai (nhóm 2–3 người thì gộp): **spec owner** (`01`, `02`), **CVAT owner** (`03_*`, `sample_pack.csv`,
