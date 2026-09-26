@@ -1,60 +1,56 @@
-# Annotation guideline — TODO tên bài toán
+# Annotation guideline — Traffic Light State & Relevance
 
-**Version:** v0
-
-<!--
-v0 = chưa có bản nháp. Đổi dòng Version ở trên thành v1 khi xong bản nháp đầu, v2 sau calibration, v3 sau blind
-handoff; mỗi lần tăng version ghi một dòng vào 08_revision_log.md. `make freeze` đòi v2 trở lên.
-
-File này là thứ nhóm peer nhận nguyên văn trong blind pack và là Guide dán vào CVAT. Peer KHÔNG nhận
-edge_case_cards.md, gold_decisions.csv hay sample_pack.csv. Rule nào peer cần biết phải nằm ở đây.
-No hidden rules: rule chỉ giải thích bằng miệng thì coi như không tồn tại.
-Ví dụ trong guideline chỉ dùng ảnh split example hoặc calibration, không dùng ảnh blind.
--->
+**Version:** v1
 
 ## 1. Objective + scope
-
-TODO — label để làm gì; object/region nào trong scope, cái nào ngoài scope.
+- **Mục tiêu:** Định vị đèn giao thông, trạng thái màu, và xác định xem đèn có đang điều khiển hướng đi hiện tại của xe (ego vehicle) hay không.
+- **Trong scope:** Mọi đầu đèn giao thông dành cho xe cơ giới ở phía trước mặt.
+- **Ngoài scope (không vẽ):** Đèn người đi bộ, biển báo có hình đèn, đèn ở phía sau xe khác (với đèn cảnh báo). Bỏ qua đèn quá nhỏ (< 10x10 px).
 
 ## 2. Annotation unit
-
-TODO — image, frame hay track? Instance hay region? Khi nào một object được tính là instance mới?
+- **Unit:** Image.
+- **Instance:** Mỗi cụm đèn giao thông (housing/casing) là 1 object `traffic_light` riêng biệt. Nếu cột có 3 cụm đèn chỉ 3 hướng khác nhau, vẽ 3 box riêng biệt.
 
 ## 3. Geometry rule
-
-TODO — rectangle / polyline / polygon; tight, visible hay amodal; đặt điểm thế nào; endpoint ở đâu; tolerance.
+- Dùng Bounding Box (Rectangle).
+- Box phải vẽ tight (ôm sát) lấy toàn bộ **phần vỏ ngoài (housing/casing)** của cụm đèn, không chỉ khoanh vùng bóng đèn đang sáng.
+- Nếu đèn lọt vào khung ảnh nhưng bị che khuất một phần (occluded), chỉ vẽ phần nhìn thấy được (visible box).
 
 ## 4. Taxonomy
-
-TODO — class hierarchy; cái gì là class, cái gì là attribute; allowed values; default và khi nào dùng `unknown`.
-Bảng đầy đủ ở `03_ontology_and_cvat_setup.md` — hai nơi phải khớp nhau.
+- **Class:** `traffic_light`
+- **Attributes:**
+  1. `state` (Trạng thái màu): 
+     - `red`: Đỏ
+     - `green`: Xanh
+     - `yellow`: Vàng
+     - `off`: Không sáng
+     - `unknown`: Sáng nhưng lóa không rõ màu.
+  2. `relevance` (Sự liên quan đến xe):
+     - `relevant`: Đèn điều khiển làn đường mà xe có khả năng đang đi thẳng hoặc rẽ (nếu đang ở làn rẽ).
+     - `not_relevant`: Đèn của hướng đi ngược chiều, hoặc đèn dành rõ ràng cho làn rẽ trong khi xe đang ở làn đi thẳng.
+     - `unknown`: Không thể xác định xe đang ở làn nào để kết luận.
 
 ## 5. Inclusion / exclusion
-
-TODO — trường hợp bắt buộc label; trường hợp ignore.
+- **Bắt buộc:** Phải khoanh tất cả đèn giao thông có thể tác động đến việc lái xe.
+- **Bỏ qua:** Hình phản chiếu của đèn giao thông trên kính xe hoặc vũng nước.
 
 ## 6. Visibility / occlusion
-
-TODO — bị che một phần, bị cắt mép ảnh, nhỏ/xa, phản chiếu, loá, độ tin cậy thấp.
+- **Bị che một phần (cành cây, xe tải lớn):** Vẽ box quanh phần vỏ đèn nhìn thấy được. Nếu phần bị che >80% khiến không nhìn được màu đèn, chọn `state=unknown`.
+- **Loá (Glare):** Nếu chụp ngược sáng hoặc phơi sáng lâu làm đèn lóa to hơn vỏ thực tế, cố gắng ước lượng vỏ đèn thật, chọn `state=unknown` nếu không thể chắc chắn màu.
 
 ## 7. Ambiguity / escalation
-
-TODO — khi nào LABEL / IGNORE / UNKNOWN / ESCALATE khi bằng chứng không đủ. Ghi rõ **thể hiện mỗi quyết định trong
-CVAT bằng cách nào** (attribute, giá trị, tag…), để quyết định đó nhìn thấy được trong file export.
+- Nếu thấy 1 cụm đèn lơ lửng không biết của ai: Gắn nhãn, để `relevance=unknown`.
+- Mọi case phân vân không thể dùng luật này để giải quyết -> Dùng tag `ESCALATE` vào object đó. Nhóm chấm điểm (QA) sẽ lọc các tag `ESCALATE` này.
 
 ## 8. Temporal rule
-
-TODO — nếu là video/track: track bắt đầu/kết thúc khi nào, attribute nào mutable, xử lý chuyển trạng thái và bị che
-ngắn. Task ảnh tĩnh ghi "Không áp dụng — task ảnh tĩnh".
+- Không áp dụng — bài toán hiện tại ưu tiên xử lý frame tĩnh. (Nếu dùng clip `lisa`, nhãn không cần link track giữa các frame).
 
 ## 9. Examples
-
-TODO — positive, negative và edge case, mỗi ví dụ có sample_id (split example/calibration) và expected output.
-
 | sample_id | Thấy gì | Expected output | Rule áp dụng |
 |---|---|---|---|
-| TODO | TODO | TODO | TODO |
+| BDD07 | Giao lộ, 1 đèn đi thẳng sáng xanh, 1 đèn rẽ trái sáng đỏ. Xe đang đi thẳng | Box1: `state=green, relevance=relevant`. Box2: `state=red, relevance=not_relevant` | Xác định relevance dựa trên làn xe |
+| BDD11 | Đèn xa tít, chỉ thấy chấm sáng, không thấy vỏ | Không label (IGNORE) | Ngoài scope vì quá nhỏ |
 
 ## 10. Common mistakes
-
-TODO — những lỗi reviewer có khả năng gặp nhiều nhất và cách tránh.
+1. **Chỉ vẽ quanh mỗi cái bóng đèn:** Lỗi phổ biến. Phải vẽ bao quanh CẢ CÁI VỎ NHỰA của đèn.
+2. **Quên gán Relevance:** Mặc định CVAT có thể không bắt buộc, annotator hay quên chọn `relevant` hay `not_relevant`. Cần review kỹ.

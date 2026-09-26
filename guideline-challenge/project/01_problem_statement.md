@@ -1,31 +1,29 @@
 # Problem statement + downstream contract
 
-Tối đa nửa trang, viết **trước khi mở CVAT**. Đây là bằng chứng của gate G1 (topic lock). Thay mọi placeholder
-mới là xong.
-
 ## Bài toán
-
-TODO — một câu: road element nào, trong tình huống nào, khó ở đâu. "Label traffic signs" là quá rộng; "hierarchical
-sign taxonomy cho biển nhỏ/xa/bị che" là đủ cụ thể.
+Gắn nhãn (label) trạng thái đèn giao thông và xác định "đèn nào đang điều khiển làn đường của xe mình" (ego relevance) tại các giao lộ phức tạp, có nhiều đầu đèn, và trong các điều kiện thiếu sáng.
 
 ## Downstream contract
-
-1. **Downstream task / model / user là ai?** TODO
-2. **Output annotation nào thực sự cần?** (geometry, class, attribute nào) TODO
-3. **Failure nào gây hậu quả lớn nhất?** (đây sẽ là decision `critical` trong gold) TODO
-4. **Khi ambiguity không resolve được, ai / ở đâu là escalation path?** TODO
+1. **Downstream task / model / user là ai?** 
+   Hệ thống điều khiển xe tự hành (Autonomous Driving System) phần Planning & Control, cần quyết định đi tiếp hay dừng lại tại giao lộ.
+2. **Output annotation nào thực sự cần?**
+   Tọa độ Box (bounding box) của vỏ đèn, trạng thái màu đèn (`state`) và thuộc tính liên quan đến xe (`relevance`).
+3. **Failure nào gây hậu quả lớn nhất?** (đây sẽ là decision `critical` trong gold)
+   - Bỏ sót đèn đỏ đang điều khiển làn xe mình (dẫn đến vượt đèn đỏ, tai nạn).
+   - Nhận diện nhầm đèn đỏ của làn khác thành đèn đỏ của làn mình (dẫn đến phanh gấp hoặc dừng sai quy định).
+4. **Khi ambiguity không resolve được, ai / ở đâu là escalation path?**
+   Đánh dấu thuộc tính `relevance=unknown` hoặc dùng tag `ESCALATE` (nếu quy định) để đội QA (Hoàng Công Chứ) review thủ công và chốt luật lại với Tech Lead.
 
 ## Scope
-
-- **Trong scope (bắt buộc label):** TODO
-- **Ngoài scope (ignore):** TODO
-- **Geometry tolerance:** TODO (ví dụ "box ôm phần vỏ đèn nhìn thấy, lệch ≤ 2 px mỗi cạnh là đạt")
+- **Trong scope (bắt buộc label):** Các đèn giao thông dành cho xe cơ giới ở phía trước xe, có thể nhìn thấy bằng mắt thường.
+- **Ngoài scope (ignore):** Đèn tín hiệu dành cho người đi bộ, đèn gắn trên đuôi xe tải, đèn đường chiếu sáng, hoặc đèn quá xa (kích thước box dưới 10x10 px).
+- **Geometry tolerance:** Bounding box phải bao trọn phần vỏ của đầu đèn giao thông. Chấp nhận sai số mép viền tối đa 2 pixel.
 
 ## Output chấm được
-
-TODO — loại decision nào sẽ có trong blind test: LABEL / IGNORE / UNKNOWN / ESCALATE, class, attribute, geometry.
-Mỗi loại phải nhìn thấy được trong file export CVAT, nếu không thì không chấm được.
+- LABEL / IGNORE.
+- Class: `traffic_light`.
+- Attribute: `state` (red/green/yellow/off/unknown), `relevance` (relevant/not_relevant/unknown).
+- Geometry: Bounding box.
 
 ## Dữ liệu và giới hạn
-
-TODO — nguồn ảnh, số ảnh dự kiến dùng, giới hạn đã biết (ví dụ LISA trong repo chỉ có một clip 30 frame liên tiếp).
+Sử dụng 30 ảnh trong folder 
