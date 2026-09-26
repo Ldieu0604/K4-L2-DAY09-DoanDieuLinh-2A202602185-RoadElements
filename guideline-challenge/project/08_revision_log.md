@@ -8,3 +8,4 @@ Cột Version ghi dạng `v1`, `v2`, `v3` — `make status` tìm dòng bảng c�
 
 | Version | Đổi gì | Vì sao | Bằng chứng |
 |---|---|---|---|
+| v2 | Sửa lỗi chính tả (elevance -> relevance, v.v.). Bổ sung quy định: Hướng (direction) được xác định theo góc nhìn của xe (ego vehicle) thay vì đoán hướng làn đường. | 2 bạn annotator trong nhóm bị bối rối không biết nên xác định hướng trái/phải theo người chụp hay theo chiều đường. | Phản hồi trực tiếp từ bước Calibration nội bộ. |
