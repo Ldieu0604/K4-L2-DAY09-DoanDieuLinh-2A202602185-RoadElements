@@ -1,11 +1,8 @@
 # Revision log
 
-Guideline v1 = bản nháp đầu; v2 = sau calibration nội bộ; v3 = sau blind handoff. Mỗi lần tăng `Version` trong
-`02_guideline.md`, thêm một hoặc nhiều dòng vào bảng: đổi gì và vì sao, kèm bằng chứng (sample_id, dòng
-calibration report, câu hỏi trong clarification log, feedback của peer).
-
-Cột Version ghi dạng `v1`, `v2`, `v3` — `make status` tìm dòng bảng có `v2` và dòng có `v3`.
+Guideline v1 = bản nháp đầu; v2 = sau calibration nội bộ; v3 = sau blind handoff.
 
 | Version | Đổi gì | Vì sao | Bằng chứng |
 |---|---|---|---|
-| v2 | Sửa lỗi chính tả (elevance -> relevance, v.v.). Bổ sung quy định: Hướng (direction) được xác định theo góc nhìn của xe (ego vehicle) thay vì đoán hướng làn đường. | 2 bạn annotator trong nhóm bị bối rối không biết nên xác định hướng trái/phải theo người chụp hay theo chiều đường. | Phản hồi trực tiếp từ bước Calibration nội bộ. |
+| v1 | Khởi tạo toàn bộ 10 mục guideline ban đầu | Đặt nền tảng quy tắc gán nhãn cho bài toán đèn giao thông | TL01 - TL05 (split example) |
+| v2 | 1. Làm rõ quy tắc relevance làn rẽ trái/phải đối với xe đi thẳng.<br>2. Hướng dẫn gán direction khi đèn trạng thái off.<br>3. Bổ sung phân biệt đèn đi thẳng và đèn tổng tại ngã tư | Khắc phục các điểm bất đồng phát hiện trong đợt calibration nội bộ giữa annotator HT và NT | Dòng 1, 2, 3, 4 trong `06_calibration_report.csv` (các mẫu TL06, TL10) |

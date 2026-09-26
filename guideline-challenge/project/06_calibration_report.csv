@@ -1,1 +1,5 @@
 sample_id,item,values_by_annotator,diagnosis,action,rule_change
+TL06,relevance,HT=relevant;NT=not_relevant,guideline_gap,revise_rule,Làm rõ quy tắc khi đèn rẽ trái đỏ và đèn thẳng xanh cùng xuất hiện: xe ego ở làn đi thẳng thì đèn rẽ trái bắt buộc gán relevance=not_relevant để tránh can thiệp phanh nhầm
+TL06,direction,HT=unknown;NT=left,guideline_gap,revise_rule,Đèn rẽ trái ở trạng thái off (tắt) vẫn gán direction=left dựa trên hình thái và vị trí cụm đèn rẽ không gán unknown khi nhận diện được hộp đèn
+TL10,direction,HT=all;NT=straight,guideline_gap,add_example,Bổ sung ví dụ mẫu TL10 phân định rõ đầu đèn thẳng (straight) với đầu đèn tổng (all) khi có nhiều cột tín hiệu song song
+TL10,relevance,HT=relevant;NT=not_relevant,guideline_gap,revise_rule,Thống nhất không gán relevant cho đèn rẽ khi làn của ego đi thẳng
