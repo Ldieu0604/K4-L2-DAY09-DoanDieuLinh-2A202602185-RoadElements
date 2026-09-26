@@ -9,7 +9,7 @@
 
 ## 2. Annotation unit
 - **Unit:** Image.
-- **Instance:** Mỗi cụm đèn giao thông (housing/casing) là 1 object 	raffic_light riêng biệt. Nếu cột có 3 cụm đèn chỉ 3 hướng khác nhau, vẽ 3 box riêng biệt, không vẽ gộp.
+- **Instance:** Mỗi cụm đèn giao thông (housing/casing) là 1 object traffic_light riêng biệt. Nếu cột có 3 cụm đèn chỉ 3 hướng khác nhau, vẽ 3 box riêng biệt, không vẽ gộp.
 
 ## 3. Geometry rule
 - Dùng Bounding Box (Rectangle).
@@ -18,21 +18,12 @@
 - Nếu đèn bị che khuất một phần (occluded): Chỉ vẽ bao quanh phần nhìn thấy được (**visible box**), không vẽ amodal box xuyên qua vật cản.
 
 ## 4. Taxonomy
-- **Class:** 	raffic_light
+- **Class:** traffic_light
 - **Attributes:**
-  1. state (Trạng thái màu): 
-ed, green, yellow, off, unknown.
-  2. 
-elevance (Sự liên quan đến xe):
-     - 
-elevant: Đèn điều khiển làn đường mà xe ego đang đi hoặc chuẩn bị đi qua.
-     - 
-ot_relevant: Đèn dành riêng cho làn rẽ khi xe đang ở làn thẳng, hoặc đèn ngược chiều.
-     - unknown: Không thể xác định xe đang ở làn nào để kết luận.
-  3. direction (Hướng điều khiển): straight, left, 
-ight, ll (đèn tròn thông thường), unknown.
-  4. 
-eeds_review: Checkbox đánh dấu 	rue khi ca phức tạp cần QA xem lại.
+  1. state (Trạng thái màu): red, green, yellow, off, unknown.
+  2. relevance (Sự liên quan đến xe): relevant, not_relevant, unknown.
+  3. direction (Hướng điều khiển): straight, left, right, all (đèn tròn thông thường), unknown.
+  4. needs_review: Checkbox đánh dấu true khi ca phức tạp cần QA xem lại.
 - **Image-level Tag:** image_escalate (gắn cho toàn ảnh khi thời tiết quá mờ hoặc mất toàn bộ ngữ cảnh làn đường).
 
 ## 5. Inclusion / exclusion

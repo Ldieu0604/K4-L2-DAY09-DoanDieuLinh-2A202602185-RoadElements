@@ -26,4 +26,4 @@ Gắn nhãn (label) trạng thái đèn giao thông và xác định "đèn nào
 - Geometry: Bounding box.
 
 ## Dữ liệu và giới hạn
-Sử dụng 30 ảnh trong folder 
+Sử dụng 30 ảnh trong folder `data_label/2_raw_images_for_annotation_30/`
